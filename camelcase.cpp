@@ -2,6 +2,8 @@
 #include <fstream>
 #include <regex>
 #include <string>
+
+extern string file_name;
 int camelcase() {
   // Regex for camelCase function names
     regex camelCaseFunc(R"(\b[a-z]+(?:[A-Z][a-z0-9]*)*\s*\()");
@@ -10,7 +12,7 @@ int camelcase() {
 
     cout << "🔍 CamelCase function names detected in " << filename << ":\n";
 
-    while (getline(file, line)) {
+    while (getline(file_name, line)) {
         lineNumber++;
         smatch match;
         if (regex_search(line, match, camelCaseFunc)) {
